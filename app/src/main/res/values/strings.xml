@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Actividad_313</string>
+    <string name="login">Login</string>
+    <string name="moto_shared">Moto Shared</string>
+    <string name="logueado">Logueado: </string>
+    <string name="intentos">Intentos: </string>
 </resources>
