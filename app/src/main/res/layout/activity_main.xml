@@ -27,12 +27,14 @@
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"/>
     <EditText
+        android:id="@+id/usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:hint="Enter Name"
         android:textColorHint="@color/pink" />
     <EditText
+        android:id="@+id/contrasenia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
@@ -43,24 +45,30 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
         <TextView
+            android:id="@+id/textCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/intentos" />
         <TextView
+            android:id="@+id/textLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/logueado"
             android:layout_alignParentEnd="true" />
         <Button
+            android:id="@+id/botonLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:onClick="clickLogin"
             android:text="LOGIN" />
         <Button
+            android:id="@+id/botonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:onClick="clickCancel"
             android:text="CANCEL" />
     </RelativeLayout>
 
