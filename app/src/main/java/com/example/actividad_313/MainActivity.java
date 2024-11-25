@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         String usuario="Saul";
         String contrasenia="usuario";
-        int num_Login=0;
-        int num_Intentos=0;
         Button buttonLogin=(Button) findViewById(R.id.botonLogin);
         Button buttonCancel=(Button) findViewById(R.id.botonCancel);
         EditText editTextUsuario=findViewById(R.id.usuario);
@@ -30,14 +28,17 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int num_Login=0;
+                int num_Intentos=0;
                 String usuarioIngresado=editTextUsuario.getText().toString();
                 String contrasreniaIngresada=editTextContrasenia.getText().toString();
+
                 if(usuarioIngresado!=null&&contrasreniaIngresada!=null){
                     if(usuarioIngresado==usuario&&contrasreniaIngresada==contrasenia){
                         System.out.println("Login realizado correctamente");
                         num_Login++;
                     }else{
-                        System
+                        System.out.println("Credenciales incorrectas");
                     }
                 }else{
                     System.out.println("Los campos de las credenciales estan vacios");
