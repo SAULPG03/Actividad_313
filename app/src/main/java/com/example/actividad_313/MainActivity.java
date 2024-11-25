@@ -32,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String usuarioIngresado=editTextUsuario.getText().toString();
                 String contrasreniaIngresada=editTextContrasenia.getText().toString();
+                if(usuarioIngresado!=null&&contrasreniaIngresada!=null){
+                    if(usuarioIngresado==usuario&&contrasreniaIngresada==contrasenia){
+                        System.out.println("Login realizado correctamente");
+                        num_Login++;
+                    }else{
+                        System
+                    }
+                }else{
+                    System.out.println("Los campos de las credenciales estan vacios");
+                }
 
             }
         });
