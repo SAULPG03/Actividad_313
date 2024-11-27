@@ -4,49 +4,67 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Declare instance variables to persist login count
+    private int num_Login = 0;
+    private int num_Intentos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        String usuario="Saul";
-        String contrasenia="usuario";
-        Button buttonLogin=(Button) findViewById(R.id.botonLogin);
-        Button buttonCancel=(Button) findViewById(R.id.botonCancel);
-        EditText editTextUsuario=findViewById(R.id.usuario);
-        EditText editTextContrasenia=findViewById(R.id.contrasenia);
-        ;
+
+        // Hardcoded credentials
+        String usuario = "Saul";
+        String contrasenia = "usuario";
+
+        // UI elements
+        Button buttonLogin = findViewById(R.id.botonLogin);
+        Button buttonCancel = findViewById(R.id.botonCancel);
+        EditText editTextUsuario = findViewById(R.id.usuario);
+        EditText editTextContrasenia = findViewById(R.id.contrasenia);
+        TextView textLogin = findViewById(R.id.textLogin);
+        TextView textCancel = findViewById(R.id.textCancel);
+
+        // Login button click listener
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int num_Login=0;
-                int num_Intentos=0;
-                String usuarioIngresado=editTextUsuario.getText().toString();
-                String contrasreniaIngresada=editTextContrasenia.getText().toString();
+                String usuarioIngresado = editTextUsuario.getText().toString();
+                String contraseniaIngresada = editTextContrasenia.getText().toString();
 
-                if(usuarioIngresado!=null&&contrasreniaIngresada!=null){
-                    if(usuarioIngresado==usuario&&contrasreniaIngresada==contrasenia){
-                        System.out.println("Login realizado correctamente");
+                if (usuarioIngresado.isEmpty() || contraseniaIngresada.isEmpty()) {
+                    System.out.println("Los campos de las credenciales están vacíos");
+                } else {
+                    if (usuarioIngresado.equals(usuario) && contraseniaIngresada.equals(contrasenia)) {
+                        // Login correcto
                         num_Login++;
-                    }else{
+                        textLogin.setText("Login: " + num_Login);
+                        System.out.println("Login realizado correctamente");
+                    } else {
+                        // Login incorrecto
+                        num_Intentos++;
+                        textCancel.setText("Intentos: "+num_Intentos);
                         System.out.println("Credenciales incorrectas");
                     }
-                }else{
-                    System.out.println("Los campos de las credenciales estan vacios");
                 }
-
             }
         });
 
-
+        // Cancel button click listener to clear fields
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editTextUsuario.setText("");
+                editTextContrasenia.setText("");
+            }
+        });
     }
 }
